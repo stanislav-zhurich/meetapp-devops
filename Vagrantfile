@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+web_sources = 'd:/sources/meetapp/meetapp-ui'
+node_sources = 'd:/sources/meetapp/meetapp-pres'
+
 Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: "echo Hello"
   config.vm.box = "ubuntu/trusty64"
@@ -9,7 +12,6 @@ Vagrant.configure("2") do |config|
 
   #NGINX server
   config.vm.define "web" do |web|
-     web_sources = 'd:/sources/javascript/chartroom-ui'
 	 web.vm.box = "ubuntu/trusty64"
      web.vm.network "forwarded_port", guest: 80, host: 80
      web.vm.network "private_network", ip: "192.168.33.10"
@@ -40,7 +42,7 @@ Vagrant.configure("2") do |config|
  
      node.vm.provider "virtualbox" do |vb|
 	   vb.name = "nodejs"
-       vb.memory = "256"
+       vb.memory = "512"
      end
  
 

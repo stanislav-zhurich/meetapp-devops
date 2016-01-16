@@ -1,5 +1,5 @@
 echo starting node.js server...
 cd /var/node
-npm install
+sudo npm install
 export PORT=3001
 npm start
